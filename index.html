@@ -1,11 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    Hello World!
-</body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        button[type="button"] {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+
+        button[type="button"]:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            font-weight: bold;
+            margin-top: 30px;
+            color: #333;
+            font-size: 20px;
+        }
+
+        .error {
+            font-weight: bold;
+            margin-top: 30px;
+            color: #ff0000;
+            font-size: 20px;
+        }
+    </style>
+    </head>
+
+    <body>
+        <form id="bhaskara">
+            <h1>Calculadora de bhaskara</h1>
+            <label for="coeficienteA">Coeficiente A:</label>
+            <input type="number" id="coeficienteA" required>
+            <br>
+            <label for="coeficienteB">Coeficiente B:</label>
+            <input type="number" id="coeficienteB" required>
+            <br>
+            <label for="coeficienteC">Coeficiente C:</label>
+            <input type="number" id="coeficienteC" required>
+            <br>
+            <div id="resultado">
+            </div>
+            <div id="resultado2">
+            </div>
+            <br>
+            <button type="button" onclick="Calcular();">Calcular</button>
+        </form>
+    </body>
+
+    <script>
+        function Calcular() {
+            const a = parseFloat(document.getElementById('coeficienteA').value);
+            const b = parseFloat(document.getElementById('coeficienteB').value);
+            const c = parseFloat(document.getElementById('coeficienteC').value);
+
+            const delta = (b * b) - 4 * a * c;
+
+            if (delta < 0) {
+                document.getElementById('resultado').innerHTML = 'Não há raízes válidas.';
+            }
+            else {
+                const x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                const x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                document.getElementById('resultado').innerHTML = `x¹ = ${x1}`;
+                document.getElementById('resultado2').innerHTML = `x² = ${x2}`;
+            }
+        }
+    </script>
+
 </html>
